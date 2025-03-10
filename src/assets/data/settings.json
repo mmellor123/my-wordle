@@ -1,0 +1,18 @@
+{
+    "texts": {
+        "heading": "Max's WORDLE",
+        "gameover": {
+            "win": "YOU WIN",
+            "lose": "The word was: ",
+            "rating": [{"colour": "#53c449", "comment": "Amazing!"}, {"colour": "yellow", "comment": "Impressive!"}, {"colour": "red", "comment": "Good Attempt!"}],
+            "perfectGameComment": "Perfect Game!",
+            "loseGameComment": "Better luck next time!",
+            "finalMessage": "Thanks for playing."
+        },
+        "buttons": {
+            "close": "close"
+        }
+    },
+
+    "colourMap": ["#538D4E", "#B59F3B", "#3A3A3C"]
+}

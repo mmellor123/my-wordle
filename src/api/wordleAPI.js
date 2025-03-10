@@ -1,4 +1,4 @@
-
+import {dictionary} from '../assets/data/words.js';
 
 export default class WordleAPI{
     constructor(word, attempts){
@@ -6,15 +6,6 @@ export default class WordleAPI{
         this.length = word.length;
         this.attempts = attempts;
         this.attempt = 0;
-        this.guessedWords = [];
-        this.results = [];
-
-        this.guesses = [];
-        for(let i = 0 ; i < attempts ; i++){
-            this.guesses.push(
-                {guessed: false, data: {correct: false}}
-            )
-        }
     }
 
     getWord(){
@@ -29,68 +20,53 @@ export default class WordleAPI{
         return this.attempts - this.attempt;
     }
 
-    getGuessedWords(){
-        return this.guessedWords;
-    }
-
     getLength(){
         return this.length;
     }
 
     //Check if word is in dictionary
-    isWord(word){
-        return true;
-    }
-
-    isValidGuess(word){
-        if(this.attempt < this.attempts && word.length === this.length && this.isWord(word) && !this.guessedWords.includes(word)){
+    validWord(word){
+        if(dictionary[word]){
             return true;
         }
         return false;
     }
 
-    getGuess(index){
-        if(index < this.guessedWords.length){
-            return this.guessedWords[index]
+    validate(word){
+
+        if(word.length !== this.length){
+            return {valid: false, message: "INVALID_LENGTH"};
         }
+        else if(!this.validWord(word)){
+            return {valid: false, message: "INVALID_WORD"};
+        }
+        return {valid: true, message: "VALID_WORD"};
     }
 
-    getResult(index){
-        if(index < this.guessedWords.length){
-            return this.results[index]
-        }
-    }
-    
-
-    guess(word){
-        let res = {isValid: false, data: {}}
-        let compare = ''
-        if(this.isValidGuess(word)){
-            this.guessedWords.push(word);
-            res.isValid = true;
-            let correct = true;
-            for(let i = 0 ; i < this.length ; i++){
-                if(word[i] === this.word[i]){
-                    compare +='+'
-                }
-                else{
-                    correct = false;
-                    if(this.word.includes(word[i])){
-                        compare += 'x'
-                    }
-                    else{
-                        compare += '-'
-                    }
+    getDifference(word){
+        const difference = Array(word.length).fill('-');
+        let correct = true;
+        for(let i = 0 ; i < this.length ; i++){
+            if(word[i] === this.word[i]){
+                difference[i] = '+'
+            }
+            else{
+                correct = false;
+                if(this.word.includes(word[i])){
+                    difference[i] = '_'
                 }
             }
-            this.guesses[this.attempt].guessed = true
-            this.guessed[this.attempt].data = {correct: correct, result: compare}
-            this.attempt = this.attempt + 1;
-            this.results.push(compare);
-            res.data.compare = compare;
-            res.data.result = correct;
         }
-        return res;
+        return {correct, difference};
+    }
+
+    guess(word){
+        const {valid, message} = this.validate(word);
+        if(!valid){
+            throw message;
+        }
+        const res = this.getDifference(word);
+        return {valid: valid, data: {correct: res.correct, result: res.difference}};
     }
 
 

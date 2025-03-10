@@ -1,0 +1,22 @@
+
+
+.key {
+    font-size: 20px; 
+    height: 60px;
+    width: 100%;
+    text-align: center;
+    line-height: 60px;
+    vertical-align: middle;
+    font-weight: bold;
+    border-radius: 5px;
+    color: white;
+}
+
+.key:hover{
+    cursor: pointer;
+}
+
+.enter-key {
+    font-size: 13px !important;
+    grid-column: span 2 !important;
+}

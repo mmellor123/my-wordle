@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import reportWebVitals from './reportWebVitals';
 import Wordle from './components/Wordle';
 import { AlertProvider } from './api/context/AlertContext';
 
@@ -13,5 +12,3 @@ root.render(
     </AlertProvider>
   </React.StrictMode>
 );
-
-reportWebVitals();

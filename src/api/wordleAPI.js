@@ -1,11 +1,10 @@
-import {dictionary} from '../assets/data/words.js';
-
 export default class WordleAPI{
-    constructor(word, attempts){
+    constructor(word, attempts, dictionary){
         this.word = word;
         this.length = word.length;
         this.attempts = attempts;
         this.attempt = 0;
+        this.dictionary= dictionary;
     }
 
     getWord(){
@@ -26,7 +25,7 @@ export default class WordleAPI{
 
     //Check if word is in dictionary
     validWord(word){
-        if(dictionary[word]){
+        if(this.dictionary[word]){
             return true;
         }
         return false;

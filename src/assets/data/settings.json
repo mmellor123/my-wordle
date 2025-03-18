@@ -1,4 +1,7 @@
 {
+    "api": {
+        "baseUrl": "https://wordleapi.maxmellor.me"
+    },
     "texts": {
         "heading": "Max's WORDLE",
         "gameover": {

@@ -6,10 +6,10 @@ import { useAlert } from "../api/context/AlertContext";
 import settings from '../assets/data/settings.json';
 
 
-const Wordle = ({correctWord, attempts}) => {
+const Wordle = ({correctWord, attempts, dictionary}) => {
     
     const [mounted, setMounted] = useState(false);
-    const [wordleHandler] = useState(new WordleAPI(correctWord, attempts));
+    const [wordleHandler] = useState(new WordleAPI(correctWord, attempts, dictionary));
     const [regex] = useState(/^[a-zA-z]{1,1}$/);
     const [attempt, setAttempt] = useState(0);
     const [guesses, setGuesses] = useState([]);

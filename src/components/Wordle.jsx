@@ -204,7 +204,7 @@ const Wordle = ({correctWord, attempts, dictionary}) => {
             {mounted &&
                 <div style={{paddingTop: "3%"}}>
             <br/>
-            <div className="guesses-container">
+            <div className="guesses-container" style={{maxWidth: `${70*correctWord.length}px`}}>
                 <div className="guesses-row" style={{gridTemplateRows: `repeat(${attempts}, 1fr)`}}>
                     {guesses.map((attempt, i) => <Word id={`word-${i}`} row={i}/>)}
                 </div>

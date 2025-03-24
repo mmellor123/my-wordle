@@ -20,7 +20,8 @@ const WordleInit = () => {
 
 
     const getDictionary = async () => {
-        const url = `${baseUrl}/dictionary`;
+        const today = new Date()
+        const url = `${baseUrl}/dictionary?date=${today.toISOString().split('T')[0]}`;
         const res = fetch(url, {headers: {'Content-Type': 'application/json'}})
             .then((res) => res.json())
             .then((res) => {

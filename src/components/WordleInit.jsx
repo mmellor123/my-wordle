@@ -60,7 +60,7 @@ const WordleInit = () => {
     return (
         <div>
             {word && dictionary && 
-                <Wordle correctWord={word} attempts={6} dictionary={dictionary}/>
+                <Wordle correctWord={'swear'} attempts={6} dictionary={dictionary}/>
             }
         </div>
     )

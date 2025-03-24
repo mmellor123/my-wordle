@@ -149,8 +149,10 @@ const Wordle = ({correctWord, attempts, dictionary}) => {
             }
 
             function handleOnAnimationEnd(){
-                setAnimationOn(false) ; 
-                setAttempt((attempt) => attempt + 1);
+                if(index === correctWord.length - 1){
+                    setAnimationOn(false) ; 
+                    setAttempt((attempt) => attempt + 1);
+                }
             }
 
             return (
@@ -204,7 +206,7 @@ const Wordle = ({correctWord, attempts, dictionary}) => {
             <br/>
             <div className="guesses-container">
                 <div className="guesses-row" style={{gridTemplateRows: `repeat(${attempts}, 1fr)`}}>
-                    {guesses.map((attempt, i) => <Word row={i}/>)}
+                    {guesses.map((attempt, i) => <Word id={`word-${i}`} row={i}/>)}
                 </div>
             </div>
             <div className="keyboard-container">

@@ -109,7 +109,7 @@ const Wordle = ({correctWord, attempts, dictionary}) => {
                 handleSubmit();
                 break;
             default:
-                handleNewChar(key)
+                handleNewChar(key.toLowerCase())
         }
     }
 
